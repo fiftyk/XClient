@@ -5,7 +5,7 @@ angular.module('v2App')
     return {
       template: '<div overlay="myOverlay"'+
         '<form class="form-signin" role="form">'+
-          '<h2 class="form-signin-heading">交管平台客户端</h2>'+
+          '<h2 class="form-signin-heading">指挥平台客户端</h2>'+
           '<input type="text" class="form-control" placeholder="用户名" ng-model="username" ng-disabled="logining" required autofocus>'+
           '<input type="password" class="form-control" placeholder="密码" ng-model="password" ng-disabled="logining" required>'+
           '<div type="alert alert-danger" style="color:red;", ng-show="errorMsg">{{errorMsg}}</div>'+

@@ -13,6 +13,7 @@ angular.module('v2App')
 
       //接受警情推送数据
       var onData = function (record){
+        record.timeid = new Date().getTime();
         console.log(record);
         // record.time = $filter('date')(record.time, 'yyyy-MM-dd HH:mm:ss');
         
@@ -24,8 +25,8 @@ angular.module('v2App')
         deferred.notify(record);
 
         //播发音频
-        /*console.log('播发音频',document.getElementById('audio'));
-        document.getElementById('audio').play();*/
+        console.log('播发音频',document.getElementById('audio'));
+        document.getElementById('audio').play();
       };
 
       this.getData = function (){
@@ -35,7 +36,7 @@ angular.module('v2App')
       var subscribe = function (info){
         var dept = info.user.dept, deptNo = null;
         
-        if(dept.deptCode !== '320300000000'){
+        if(dept.parentAreaDept.deptCode !== '320300000000'){
           deptNo = dept.parentAreaDept.deptCodeNew;
         }
         

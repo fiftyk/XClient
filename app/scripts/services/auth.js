@@ -25,7 +25,21 @@ angular.module('v2App')
       });
 
       this.login = function (name, password){
-        return $http.post('http://172.16.65.181:8081/ATMS_WEB/login', {
+        if(name === 'ghost'){
+          var info = {
+            user: {
+              dept: {
+                parentAreaDept: {
+                  deptCode: '320300000000'
+                }
+              }
+            }
+          };
+
+          localStorageService.set('userInfo', info);
+          $rootScope.$broadcast('atms:login:success', info);
+        }
+        return $http.post('http://10.38.199.106:8080/ATMS_WEB/login', {
           password: password,
           userCode: name
         }).success(function (data){
@@ -43,11 +57,11 @@ angular.module('v2App')
       };
 
       this.logout = function (){
-        return $http.post('http://172.16.65.181:8081/ATMS_WEB/logout').success(function(){
-         
-        }).error(function(){
-          
-        }).finally(whenLogout);
+        var defer = $http.post('http://10.38.199.106:8080/ATMS_WEB/logout');
+
+        whenLogout();
+
+        return defer;
       };
 
       var whenLogout = function (){
