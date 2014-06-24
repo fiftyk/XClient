@@ -3,8 +3,8 @@
   "main": "app/index.html",
   "window": {
     "toolbar": true,
-    "title": "徐州交管平台客户端",
-    "icon": "logo.png",
+    "title": "指挥平台客户端",
+    "icon": "icon.png",
     "width": 360,
     "height": 640,
     "position": "mouse",

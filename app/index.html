@@ -32,7 +32,7 @@
     <!-- Sidebars -->
 
     <div class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar">
-      <h1 class="app-name">徐州交管平台客户端</h1>
+      <h1 class="app-name">指挥平台客户端</h1>
 
       <div class="scrollable">
         <div class="scrollable-content">
@@ -58,7 +58,7 @@
       <!-- Navbars -->
       <div class="navbar navbar-app navbar-absolute-top">
         <div class="navbar-brand navbar-brand-center" yield-to="title">
-          <span>徐州交管平台客户端</span>
+          <span>指挥平台客户端</span>
         </div>
 
         <div class="btn-group pull-left" yield-to="goBack">
@@ -104,7 +104,7 @@
 
     <!-- <audio id="audio" src="beep.ogg" autoplay></audio> -->
     <audio id="audio">
-      <source src="beep.ogg" type="audio/ogg">
+      <source src="bootSound.ogg" type="audio/ogg">
     </audio>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -135,7 +135,7 @@
         <script src="bower_components/websocket/socket.io/socket.io.js"></script>
         <script src="bower_components/websocket/moment.min.js"></script>
         <script>
-          var socket =  io.connect('http://192.168.2.102:9092');
+          var socket =  io.connect('http://10.38.199.106:9092');
 
           // Load library
           var gui = require('nw.gui');
