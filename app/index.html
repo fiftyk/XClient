@@ -102,7 +102,10 @@
     
     <div login-form></div>
 
-    <!-- <audio id="audio" src="song.mp3"></audio> -->
+    <!-- <audio id="audio" src="beep.ogg" autoplay></audio> -->
+    <audio id="audio">
+      <source src="beep.ogg" type="audio/ogg">
+    </audio>
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/json3/lib/json3.min.js"></script>
@@ -133,7 +136,7 @@
         <script src="bower_components/websocket/moment.min.js"></script>
         <script>
           var socket =  io.connect('http://192.168.2.102:9092');
-          
+
           // Load library
           var gui = require('nw.gui');
 
