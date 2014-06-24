@@ -1,0 +1,67 @@
+<div content-for="title">
+  <span>警情详细</span>
+</div>
+
+<div content-for="goBack">
+  <a ng-href="#/policeAlarms" class="btn btn-navbar">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+</div>
+
+<div content-for="navbarAction">
+  <div class="btn btn-navbar">
+    派警
+  </div>
+</div>
+
+
+<div class="scrollable">
+  <div class="scrollable-content">
+    <form>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2 class="panel-title">
+            <a ng-click="openBrowers()">{{record.serNo||20140701}}</a>
+          </h2>
+        </div>
+        <div class="panel-body">
+
+          <!-- Content -->
+          <textarea bs-form-control
+            ng-model="record.reason" 
+            label="警情内容"  label-class="col-xs-12" class="col-xs-12" placeholder="报警内容">
+          </textarea>
+          
+          <input bs-form-control type="text" 
+            ng-model="record.time" 
+            label="时间"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="报警时间">
+
+          <input bs-form-control type="text" 
+            ng-model="record.addr" 
+            label="地址"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="位置描述">
+
+          <input bs-form-control type="text" 
+            ng-model="record.lng" 
+            label="经度"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="经度">
+
+          <input bs-form-control type="text" 
+            ng-model="record.lat" 
+            label="纬度"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="纬度">
+          
+          <input bs-form-control type="text" 
+            ng-model="record.receipter" 
+            label="接警"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="接警人">
+
+          <input bs-form-control type="text" 
+            ng-model="record.telephone" 
+            label="电话"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="接警电话">
+
+          <input bs-form-control type="text" 
+            ng-model="record.department" 
+            label="部门"  label-class="col-xs-3 col-sm-2 col-lg-1" class="col-xs-9 col-sm-10 col-lg-11" placeholder="接警部门">
+          
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

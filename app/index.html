@@ -1,0 +1,165 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="v2App">
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <!-- <div class="container" ng-view=""></div> -->
+
+    <!-- Sidebars -->
+
+    <div class="sidebar sidebar-left" toggleable parent-active-class="sidebar-left-in" id="mainSidebar">
+      <h1 class="app-name">徐州交管平台客户端</h1>
+
+      <div class="scrollable">
+        <div class="scrollable-content">
+          <div class="list-group" toggle="off" bubble target="mainSidebar">
+            <a class="list-group-item" href="#/">
+              <i class="fa fa-home"></i> 主页 <i class="fa fa-chevron-right pull-right"></i>
+            </a>
+            <a class="list-group-item" href="#/settings">
+              <i class="fa fa-cogs"></i> 设置 <i class="fa fa-chevron-right pull-right"></i>
+            </a>
+            <a class="list-group-item" style="cursor:pointer;" 
+              event-click="'atms:logout'">
+              <i class="fa fa-power-off"></i> 退出
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="app">
+      
+      <!-- Navbars -->
+      <div class="navbar navbar-app navbar-absolute-top">
+        <div class="navbar-brand navbar-brand-center" yield-to="title">
+          <span>徐州交管平台客户端</span>
+        </div>
+
+        <div class="btn-group pull-left" yield-to="goBack">
+          <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i>
+          </div>
+        </div>
+
+        <div class="btn-group pull-right" yield-to="navbarAction">
+          <!-- <div class="btn btn-navbar">
+            <i class="fa fa-plus"></i> New
+          </div> -->
+        </div>
+      </div>
+
+      <div class="navbar navbar-app navbar-absolute-bottom">
+        <!-- <div class="btn-group justified">
+          <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i>
+          </div>
+          <a href="#/" class="btn btn-navbar btn-icon-only">
+            <i class="fa fa-home fa-navbar"></i>
+          </a>
+          <a href="#/" class="btn btn-navbar btn-icon-only">
+            <i class="fa fa-home fa-navbar"></i>
+          </a>
+        </div> -->
+
+        <div class="btn-group pull-left">
+          <div ng-click="toggle('mainSidebar')" class="btn btn-navbar sidebar-toggle">
+            <i class="fa fa-bars"></i>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="app-body">
+          <ng-view class="app-content"></ng-view>
+      </div>
+    </div>
+    
+    <div login-form></div>
+
+    <!-- <audio id="audio" src="song.mp3"></audio> -->
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/overthrow/dist/overthrow.js"></script>
+    <script src="bower_components/mobile-angular-ui/dist/js/mobile-angular-ui.min.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/angular-local-storage/angular-local-storage.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/app.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/policealarm.js"></script>
+        <script src="scripts/controllers/policealarms.js"></script>
+        <script src="scripts/services/auth.js"></script>
+        <script src="scripts/directives/loginform.js"></script>
+        <script src="scripts/directives/eventclick.js"></script>
+        <script src="scripts/services/policealarm.js"></script>
+        <script src="scripts/controllers/settings.js"></script>
+        <!-- endbuild -->
+        <script src="bower_components/websocket/socket.io/socket.io.js"></script>
+        <script src="bower_components/websocket/moment.min.js"></script>
+        <script>
+          var socket =  io.connect('http://192.168.2.102:9092');
+          
+          // Load library
+          var gui = require('nw.gui');
+
+          // Reference to window and tray
+          var win = gui.Window.get();
+          var tray;
+
+          // Get the minimize event
+          win.on('minimize', function() {
+            // Hide window
+            this.hide();
+
+            // Show tray
+            tray = new gui.Tray({ icon: 'icon.png' });
+
+            // Show window and remove tray when clicked
+            tray.on('click', function() {
+              win.show();
+              this.remove();
+              tray = null;
+            });
+          });
+        </script>
+</body>
+</html>

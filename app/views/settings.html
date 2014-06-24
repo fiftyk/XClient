@@ -1,0 +1,65 @@
+<div content-for="title">
+  <span>设置</span>
+</div>
+
+<div content-for="goBack">
+  <a ng-href="#/" class="btn btn-navbar">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+</div>
+
+<div content-for="navbarAction">
+  <div class="btn btn-navbar" ng-click="save();">
+    保存
+  </div>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content section">
+    <form>
+      <div class="panel">
+        <div class="panel-heading">
+          <h2 class="panel-title" style="font-size:16px;">
+            系统
+          </h2>
+        </div>
+        <div class="panel-body">
+
+          <input bs-form-control type="text" 
+            ng-model="auth.url" 
+            label="权限服务"  label-class="col-xs-4 col-sm-2 col-lg-1" class="col-xs-8 col-sm-10 col-lg-11" placeholder="IP + PORT">
+
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-heading">
+          <h2 class="panel-title" style="font-size:16px;">
+            警情报警
+          </h2>
+        </div>
+        <div class="panel-body">
+
+          <input bs-form-control type="text" 
+            ng-model="policeAlarm.url" 
+            label="服务地址"  label-class="col-xs-4 col-sm-2 col-lg-1" class="col-xs-8 col-sm-10 col-lg-11" placeholder="IP + PORT">
+          
+          <input bs-form-control type="number" 
+            ng-model="policeAlarm.maxsize"
+            min="10"
+            max="100"
+            label="保留记录"  label-class="col-xs-4 col-sm-2 col-lg-1" class="col-xs-8 col-sm-10 col-lg-11" placeholder="保留最近几条记录">
+
+        </div>
+      </div>
+
+      <div class="panel form-actions">
+        <div class="panel-body">
+          <div class="btn btn-sm btn-primary pull-right" ng-click="reset();">
+            重置
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

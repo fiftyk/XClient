@@ -1,0 +1,14 @@
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div class="list-group">
+      <div class="list-group-item">
+        <span class="badge" style="background-color: #ff3b30;">{{alarmList.length}}</span>
+        <a ng-href="#/policeAlarms">警情报警</a>
+      </div>
+      <div class="list-group-item" ng-repeat="item in modules">
+        <span class="badge" style="background-color: #ff3b30;">3</span>
+        <a ng-href="#/{{item.path}}">{{item.name}}</a>
+      </div>
+    </div>
+  </div>
+</div>

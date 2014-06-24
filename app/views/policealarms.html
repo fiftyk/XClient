@@ -1,0 +1,23 @@
+<div content-for="title">
+  <span>警情列表</span>
+</div>
+
+<div content-for="goBack">
+  <a ng-href="#/" class="btn btn-navbar">
+    <i class="fa fa-chevron-left"></i>
+  </a>
+</div>
+
+<div class="scrollable">
+  <div class="scrollable-content">
+    <div class="list-group">
+      <div class="list-group-item" ng-repeat="item in alarms">
+        <span ng-if="!item.readed" class="badge">未读</span>
+
+        <a ng-href="#/policeAlarm/{{item.serNo}}" ng-click="item.readed=true">
+         {{$index+1}} | {{item.serNo}} {{item.time}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
