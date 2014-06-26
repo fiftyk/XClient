@@ -131,11 +131,12 @@
         <script src="scripts/directives/eventclick.js"></script>
         <script src="scripts/services/policealarm.js"></script>
         <script src="scripts/controllers/settings.js"></script>
+        <script src="scripts/services/socketio.js"></script>
         <!-- endbuild -->
         <script src="bower_components/websocket/socket.io/socket.io.js"></script>
         <script src="bower_components/websocket/moment.min.js"></script>
         <script>
-          var socket =  io.connect('http://10.38.199.106:9092');
+          var socket =  io.connect('http://192.168.2.102:9092');
 
           // Load library
           var gui = require('nw.gui');
@@ -144,6 +145,8 @@
           var win = gui.Window.get();
           var tray;
 
+          win.title = '客户端';
+
           // Get the minimize event
           win.on('minimize', function() {
             // Hide window
@@ -151,6 +154,20 @@
 
             // Show tray
             tray = new gui.Tray({ icon: 'icon.png' });
+
+            var menu = new gui.Menu();
+            var menuItem = new gui.MenuItem({ 
+              type: 'normal', 
+              label: '退出',
+              tooltip: '退出客户端',
+              click: function (){
+                win.close(true);
+              },
+              key: 'Q',
+              modifiers: 'ctrl'              
+            });
+            menu.append(menuItem);
+            tray.menu = menu;
 
             // Show window and remove tray when clicked
             tray.on('click', function() {

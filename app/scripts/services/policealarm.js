@@ -12,10 +12,11 @@ angular.module('v2App')
       var alarmList = [];
 
       //接受警情推送数据
+      var i = 0;
       var onData = function (record){
-        record.timeid = new Date().getTime();
-        console.log(record);
-        // record.time = $filter('date')(record.time, 'yyyy-MM-dd HH:mm:ss');
+        i++;
+        record.seq = i;
+        console.log(i, record);
         
         if(alarmList.length === 10){
           alarmList.pop();
@@ -27,6 +28,7 @@ angular.module('v2App')
         //播发音频
         console.log('播发音频',document.getElementById('audio'));
         document.getElementById('audio').play();
+
       };
 
       this.getData = function (){
@@ -56,10 +58,21 @@ angular.module('v2App')
             clientType:'policeAlarm',
             id: deptNo
           });
+          //退订后 重置状态
+          listened = false;
         });
       };
 
+      //记录是否已经调用 this.listen 方法
+      var listened = false;
+
       this.listen = function (){
+
+        //如果已经调用
+        if(listened){
+          return;
+        }
+
         var userInfo = localStorageService.get('userInfo');
         //如果有登录信息
         if(userInfo){
@@ -71,20 +84,10 @@ angular.module('v2App')
             subscribe(localStorageService.get('userInfo'));
           });
         }
-
+        //标记已经调用了 this.listen 方法
+        listened = true;
         return deferred.promise;
       };
-
-      //模拟数据
-      /*var i = 1;
-      setInterval(function(){
-        onData({
-          serNo: i,
-          name:'警情' + i,
-          time: new Date()
-        });
-        i++;
-      }, 8000);*/
 
     };
 

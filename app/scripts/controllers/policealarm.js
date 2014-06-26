@@ -1,8 +1,11 @@
 'use strict';
 
 angular.module('v2App')
-  .controller('PolicealarmCtrl', ['$routeParams', '$scope', function ($routeParams, $scope) {
-    console.log($routeParams.id);
+  .controller('PolicealarmCtrl', ['$routeParams', '$scope', 'Policealarm', function ($routeParams, $scope, Policealarm) {
+    var index = parseInt($routeParams.id);
+
+    $scope.alarms = Policealarm.getData();
+    $scope.record = $scope.alarms[index];
 
     $scope.openBrowers = function (){
       try{

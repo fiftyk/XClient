@@ -5,8 +5,11 @@ angular.module('v2App')
     
     $scope.alarms = Policealarm.getData();
 
-    Policealarm.listen().then(null, null, function(){
-      // console.log($scope.alarms.length);
-    });
-
+    var defer = Policealarm.listen();
+    if(defer){
+      defer.then(null, null, function(){
+        // console.log($scope.alarms.length);
+      });
+    }
+    
   }]);
