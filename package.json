@@ -2,7 +2,7 @@
   "name": "v2",
   "main": "app/index.html",
   "window": {
-    "toolbar": true,
+    "toolbar": false,
     "title": "指挥平台客户端",
     "icon": "icon.png",
     "width": 360,
