@@ -39,7 +39,7 @@ angular.module('v2App')
         var dept = info.user.dept, deptNo = null;
         
         if(dept.parentAreaDept.deptCode !== '320300000000'){
-          deptNo = dept.parentAreaDept.deptCodeNew;
+          deptNo = dept.parentAreaDept.deptCodeNew.slice(0,10);
         }
         
         socket.emit('subscribe', {
@@ -50,7 +50,7 @@ angular.module('v2App')
         if(!deptNo){
           socket.on('policeAlarmRealtime', onData);
         }else{
-          socket.on('policeAlarmRealtime:' + deptNo.slice(0,10), onData);
+          socket.on('policeAlarmRealtime:' + deptNo, onData);
         }
 
         $rootScope.$on('atms:logout:success', function (){
